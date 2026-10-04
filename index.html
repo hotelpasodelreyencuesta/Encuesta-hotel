@@ -23,7 +23,7 @@
       max-width: 520px;
       min-height: 100vh;
       margin: 0 auto;
-      padding: 22px 15px;
+      padding: 18px 12px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -31,10 +31,10 @@
 
     .brand {
       text-align: center;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
       color: #666;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
 
     .screen {
@@ -46,26 +46,26 @@
     }
 
     h1 {
-      font-size: 24px;
-      line-height: 1.2;
+      font-size: 23px;
+      line-height: 1.15;
       text-align: center;
-      margin: 0 0 10px;
+      margin: 0 0 8px;
     }
 
     .subtitle {
       text-align: center;
       color: #666;
-      font-size: 16px;
-      margin: 0 0 22px;
+      font-size: 15px;
+      margin: 0 0 18px;
     }
 
     .rating-button {
       width: 100%;
-      min-height: 70px;
+      min-height: 68px;
       border: 0;
-      border-radius: 18px;
-      margin-bottom: 14px;
-      padding: 12px 10px;
+      border-radius: 16px;
+      margin-bottom: 12px;
+      padding: 10px;
       font-size: 17px;
       font-weight: 700;
       cursor: pointer;
@@ -92,18 +92,19 @@
 
     .reason-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 22px;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+      margin-bottom: 12px;
     }
 
     .reason-button {
-      min-height: 60px;
+      min-height: 52px;
       border: 2px solid #ddd;
       background: white;
-      border-radius: 15px;
-      padding: 8px 5px;
-      font-size: 14px;
+      border-radius: 11px;
+      padding: 4px 2px;
+      font-size: 12px;
+      line-height: 1.1;
       font-weight: 600;
       color: #333;
       cursor: pointer;
@@ -117,9 +118,9 @@
     .continue-button,
     .send-button {
       width: 100%;
-      min-height: 58px;
+      min-height: 54px;
       border: 0;
-      border-radius: 15px;
+      border-radius: 13px;
       background: #222;
       color: white;
       font-size: 17px;
@@ -135,14 +136,14 @@
 
     textarea {
       width: 100%;
-      min-height: 150px;
+      min-height: 140px;
       resize: vertical;
       border: 2px solid #ddd;
-      border-radius: 15px;
-      padding: 15px;
+      border-radius: 14px;
+      padding: 14px;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 16px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       background: white;
     }
 
@@ -156,24 +157,57 @@
     }
 
     .thanks-icon {
-      font-size: 52px;
-      margin-bottom: 18px;
+      font-size: 50px;
+      margin-bottom: 16px;
     }
 
     .thanks h1 {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .error {
       color: #b00020;
       text-align: center;
       font-size: 15px;
-      margin-top: 15px;
+      margin-top: 14px;
       display: none;
     }
 
     .hidden-form {
       display: none;
+    }
+
+    @media (max-width: 360px) {
+
+      .container {
+        padding: 14px 9px;
+      }
+
+      .brand {
+        margin-bottom: 15px;
+      }
+
+      h1 {
+        font-size: 21px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        margin-bottom: 14px;
+      }
+
+      .reason-grid {
+        gap: 5px;
+      }
+
+      .reason-button {
+        min-height: 49px;
+        font-size: 11px;
+      }
+
+      .continue-button {
+        min-height: 50px;
+      }
     }
   </style>
 </head>
@@ -342,25 +376,10 @@
     target="respuestaFrame"
     onsubmit="prepararEnvio()">
 
-    <input
-      type="hidden"
-      name="habitacion"
-      id="campoHabitacion">
-
-    <input
-      type="hidden"
-      name="evaluacion"
-      id="campoEvaluacion">
-
-    <input
-      type="hidden"
-      name="motivos"
-      id="campoMotivos">
-
-    <input
-      type="hidden"
-      name="comentario"
-      id="campoComentario">
+    <input type="hidden" name="habitacion" id="campoHabitacion">
+    <input type="hidden" name="evaluacion" id="campoEvaluacion">
+    <input type="hidden" name="motivos" id="campoMotivos">
+    <input type="hidden" name="comentario" id="campoComentario">
 
   </form>
 
@@ -421,7 +440,7 @@
         pregunta.textContent =
           '¿Qué podríamos mejorar?';
 
-      } else if (evaluacion === 'DESILUSIONADO') {
+      } else {
 
         pregunta.textContent =
           '¿Qué fue lo que no te gustó?';
@@ -454,7 +473,6 @@
 
             this.classList.add('selected');
           }
-
 
           document
             .getElementById('continueButton')
