@@ -215,7 +215,7 @@
 
     <section id="screen2" class="screen">
 
-      <h1>¿Qué fue lo más importante?</h1>
+      <h1 id="preguntaMotivos"></h1>
 
       <p class="subtitle">
         Podés elegir más de uno.
@@ -328,12 +328,12 @@
   </div>
 
 
-  <!-- Formulario oculto que envía los datos al servidor -->
   <iframe
     name="respuestaFrame"
     id="respuestaFrame"
     style="display:none;">
   </iframe>
+
 
   <form
     id="formularioRespuesta"
@@ -367,19 +367,14 @@
 
   <script>
 
-    /*
-      IMPORTANTE:
-      Este es el enlace del servidor de Google Apps Script.
-      No es el enlace que verá el cliente.
-    */
     const URL_SERVIDOR =
       'https://script.google.com/macros/s/AKfycbz-i-BJ2oNiwlEvPWmwqfrMTDU1Xhx5J9RWZU8hUyy5U3hYQcvUFAe6R58oLiYCJ3-tvw/exec';
 
+    const parametros =
+      new URLSearchParams(window.location.search);
 
-    const parametros = new URLSearchParams(window.location.search);
-
-    const HABITACION = parametros.get('habitacion') || '';
-
+    const HABITACION =
+      parametros.get('habitacion') || '';
 
     let evaluacionSeleccionada = '';
 
@@ -388,10 +383,11 @@
     let enviando = false;
 
 
-    document.getElementById('formularioRespuesta').action = URL_SERVIDOR;
+    document.getElementById('formularioRespuesta').action =
+      URL_SERVIDOR;
 
-
-    document.getElementById('campoHabitacion').value = HABITACION;
+    document.getElementById('campoHabitacion').value =
+      HABITACION;
 
 
     function mostrarPantalla(numero) {
@@ -411,6 +407,25 @@
     function seleccionarEvaluacion(evaluacion) {
 
       evaluacionSeleccionada = evaluacion;
+
+      const pregunta =
+        document.getElementById('preguntaMotivos');
+
+      if (evaluacion === 'CONTENTO') {
+
+        pregunta.textContent =
+          '¿Qué fue lo que más te gustó?';
+
+      } else if (evaluacion === 'MAS O MENOS') {
+
+        pregunta.textContent =
+          '¿Qué podríamos mejorar?';
+
+      } else if (evaluacion === 'DESILUSIONADO') {
+
+        pregunta.textContent =
+          '¿Qué fue lo que no te gustó?';
+      }
 
       mostrarPantalla(2);
     }
@@ -482,7 +497,6 @@
       if (enviando) {
         return;
       }
-
 
       const errorMessage =
         document.getElementById('errorMessage');
