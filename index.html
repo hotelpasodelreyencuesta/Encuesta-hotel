@@ -7,385 +7,100 @@
   <title>Opinión - Hotel Paso del Rey</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background: #f7f7f7;
-      color: #222;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 520px;
-      min-height: 100vh;
-      margin: 0 auto;
-      padding: 18px 12px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .brand {
-      text-align: center;
-      font-size: 15px;
-      font-weight: 600;
-      color: #666;
-      margin-bottom: 20px;
-    }
-
-    .screen {
-      display: none;
-    }
-
-    .screen.active {
-      display: block;
-    }
-
-    h1 {
-      font-size: 23px;
-      line-height: 1.15;
-      text-align: center;
-      margin: 0 0 8px;
-    }
-
-    .subtitle {
-      text-align: center;
-      color: #666;
-      font-size: 15px;
-      margin: 0 0 18px;
-    }
-
-    .rating-button {
-      width: 100%;
-      min-height: 68px;
-      border: 0;
-      border-radius: 16px;
-      margin-bottom: 12px;
-      padding: 10px;
-      font-size: 17px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .happy {
-      background: #dff4e5;
-      color: #176b32;
-    }
-
-    .medium {
-      background: #fff2c7;
-      color: #765900;
-    }
-
-    .sad {
-      background: #f9dddd;
-      color: #9a2525;
-    }
-
-    .reason-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 6px;
-      margin-bottom: 12px;
-    }
-
-    .reason-button {
-      min-height: 52px;
-      border: 2px solid #ddd;
-      background: white;
-      border-radius: 11px;
-      padding: 4px 2px;
-      font-size: 12px;
-      line-height: 1.1;
-      font-weight: 600;
-      color: #333;
-      cursor: pointer;
-    }
-
-    .reason-button.selected {
-      border-color: #222;
-      background: #eeeeee;
-    }
-
-    .continue-button,
-    .send-button {
-      width: 100%;
-      min-height: 54px;
-      border: 0;
-      border-radius: 13px;
-      background: #222;
-      color: white;
-      font-size: 17px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .continue-button:disabled,
-    .send-button:disabled {
-      background: #bbb;
-      cursor: not-allowed;
-    }
-
-    textarea {
-      width: 100%;
-      min-height: 140px;
-      resize: vertical;
-      border: 2px solid #ddd;
-      border-radius: 14px;
-      padding: 14px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 16px;
-      margin-bottom: 16px;
-      background: white;
-    }
-
-    textarea:focus {
-      outline: none;
-      border-color: #555;
-    }
-
-    .thanks {
-      text-align: center;
-    }
-
-    .thanks-icon {
-      font-size: 50px;
-      margin-bottom: 16px;
-    }
-
-    .thanks h1 {
-      margin-bottom: 10px;
-    }
-
-    .error {
-      color: #b00020;
-      text-align: center;
-      font-size: 15px;
-      margin-top: 14px;
-      display: none;
-    }
-
-    .hidden-form {
-      display: none;
-    }
-
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f7f7f7; color: #222; font-family: Arial, Helvetica, sans-serif; }
+    .container { width: 100%; max-width: 520px; min-height: 100vh; margin: 0 auto; padding: 18px 12px; display: flex; flex-direction: column; justify-content: center; }
+    .screen { display: none; }
+    .screen.active { display: block; }
+    .logo { display: block; width: 190px; height: auto; margin: 0 auto 22px; }
+    h1 { font-size: 23px; line-height: 1.15; text-align: center; margin: 0 0 8px; }
+    .subtitle { text-align: center; color: #666; font-size: 15px; margin: 0 0 18px; }
+    .rating-button { width: 100%; min-height: 68px; border: 0; border-radius: 16px; margin-bottom: 12px; padding: 10px; font-size: 17px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .happy { background: #dff4e5; color: #176b32; }
+    .medium { background: #fff2c7; color: #765900; }
+    .sad { background: #f9dddd; color: #9a2525; }
+    .reason-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-bottom: 12px; }
+    .reason-button { min-height: 52px; border: 2px solid #ddd; background: white; border-radius: 11px; padding: 4px 2px; font-size: 12px; line-height: 1.1; font-weight: 600; color: #333; cursor: pointer; }
+    .reason-button.selected { border-color: #222; background: #eeeeee; }
+    .continue-button, .send-button { width: 100%; min-height: 54px; border: 0; border-radius: 13px; background: #222; color: white; font-size: 17px; font-weight: 700; cursor: pointer; }
+    .continue-button:disabled, .send-button:disabled { background: #bbb; cursor: not-allowed; }
+    textarea { width: 100%; min-height: 140px; resize: vertical; border: 2px solid #ddd; border-radius: 14px; padding: 14px; font-family: Arial, Helvetica, sans-serif; font-size: 16px; margin-bottom: 16px; background: white; }
+    textarea:focus { outline: none; border-color: #555; }
+    .thanks { text-align: center; }
+    .thanks-icon { font-size: 50px; margin-bottom: 16px; }
+    .thanks h1 { margin-bottom: 10px; }
+    .error { color: #b00020; text-align: center; font-size: 15px; margin-top: 14px; display: none; }
+    .hidden-form { display: none; }
     @media (max-width: 360px) {
-
-      .container {
-        padding: 14px 9px;
-      }
-
-      .brand {
-        margin-bottom: 15px;
-      }
-
-      h1 {
-        font-size: 21px;
-      }
-
-      .subtitle {
-        font-size: 14px;
-        margin-bottom: 14px;
-      }
-
-      .reason-grid {
-        gap: 5px;
-      }
-
-      .reason-button {
-        min-height: 49px;
-        font-size: 11px;
-      }
-
-      .continue-button {
-        min-height: 50px;
-      }
+      .container { padding: 14px 9px; }
+      .logo { width: 165px; margin-bottom: 18px; }
+      h1 { font-size: 21px; }
+      .subtitle { font-size: 14px; margin-bottom: 14px; }
+      .reason-grid { gap: 5px; }
+      .reason-button { min-height: 49px; font-size: 11px; }
+      .continue-button { min-height: 50px; }
     }
   </style>
 </head>
-
 <body>
-
   <div class="container">
 
-    <div class="brand">HOTEL PASO DEL REY</div>
-
     <section id="screen1" class="screen active">
-
+      <img class="logo" src="logo.png" alt="Paso del Rey Hotel">
       <h1>¿Cómo fue tu estadía?</h1>
-
-      <p class="subtitle">
-        Nos lleva solo unos segundos.
-      </p>
-
-      <button
-        class="rating-button happy"
-        onclick="seleccionarEvaluacion('CONTENTO')">
-        🟢 CONTENTO
-      </button>
-
-      <button
-        class="rating-button medium"
-        onclick="seleccionarEvaluacion('MAS O MENOS')">
-        🟡 MÁS O MENOS
-      </button>
-
-      <button
-        class="rating-button sad"
-        onclick="seleccionarEvaluacion('DESILUSIONADO')">
-        🔴 DESILUSIONADO
-      </button>
-
+      <p class="subtitle">Nos lleva solo unos segundos.</p>
+      <button class="rating-button happy" onclick="seleccionarEvaluacion('CONTENTO')">🟢 CONTENTO</button>
+      <button class="rating-button medium" onclick="seleccionarEvaluacion('MAS O MENOS')">🟡 MÁS O MENOS</button>
+      <button class="rating-button sad" onclick="seleccionarEvaluacion('DESILUSIONADO')">🔴 DESILUSIONADO</button>
     </section>
-
 
     <section id="screen2" class="screen">
-
       <h1 id="preguntaMotivos"></h1>
-
-      <p class="subtitle">
-        Podés elegir más de uno.
-      </p>
-
+      <p class="subtitle">Podés elegir más de uno.</p>
       <div class="reason-grid">
-
-        <button class="reason-button" data-reason="Limpieza">
-          🧹 Limpieza
-        </button>
-
-        <button class="reason-button" data-reason="Cama">
-          🛏️ Cama
-        </button>
-
-        <button class="reason-button" data-reason="Baño">
-          🚿 Baño
-        </button>
-
-        <button class="reason-button" data-reason="TV">
-          📺 TV
-        </button>
-
-        <button class="reason-button" data-reason="Ruido">
-          🔇 Ruido
-        </button>
-
-        <button class="reason-button" data-reason="Mantenimiento">
-          🛠️ Mantenimiento
-        </button>
-
-        <button class="reason-button" data-reason="Climatización">
-          🌡️ Climatización
-        </button>
-
-        <button class="reason-button" data-reason="Atención">
-          👤 Atención
-        </button>
-
-        <button class="reason-button" data-reason="Precio">
-          💰 Precio
-        </button>
-
-        <button class="reason-button" data-reason="Privacidad">
-          🔒 Privacidad
-        </button>
-
-        <button class="reason-button" data-reason="Otro">
-          • Otro
-        </button>
-
+        <button class="reason-button" data-reason="Limpieza">🧹 Limpieza</button>
+        <button class="reason-button" data-reason="Cama">🛏️ Cama</button>
+        <button class="reason-button" data-reason="Baño">🚿 Baño</button>
+        <button class="reason-button" data-reason="TV">📺 TV</button>
+        <button class="reason-button" data-reason="Ruido">🔇 Ruido</button>
+        <button class="reason-button" data-reason="Mantenimiento">🛠️ Mantenimiento</button>
+        <button class="reason-button" data-reason="Climatización">🌡️ Climatización</button>
+        <button class="reason-button" data-reason="Atención">👤 Atención</button>
+        <button class="reason-button" data-reason="Precio">💰 Precio</button>
+        <button class="reason-button" data-reason="Privacidad">🔒 Privacidad</button>
+        <button class="reason-button" data-reason="Otro">• Otro</button>
       </div>
-
-      <button
-        id="continueButton"
-        class="continue-button"
-        onclick="irAComentario()"
-        disabled>
-        CONTINUAR
-      </button>
-
+      <button id="continueButton" class="continue-button" onclick="irAComentario()" disabled>CONTINUAR</button>
     </section>
-
 
     <section id="screen3" class="screen">
-
       <h1>¿Querés contarnos algo más?</h1>
-
-      <p class="subtitle">
-        Opcional.
-      </p>
-
-      <textarea
-        id="comentario"
-        maxlength="500"
-        placeholder="Tu comentario..."></textarea>
-
-      <button
-        id="sendButton"
-        class="send-button"
-        onclick="enviarRespuesta()">
-        ENVIAR
-      </button>
-
+      <p class="subtitle">Opcional.</p>
+      <textarea id="comentario" maxlength="500" placeholder="Tu comentario..."></textarea>
+      <button id="sendButton" class="send-button" onclick="enviarRespuesta()">ENVIAR</button>
       <div id="errorMessage" class="error"></div>
-
     </section>
 
-
     <section id="screen4" class="screen">
-
       <div class="thanks">
-
-        <div class="thanks-icon">
-          ✓
-        </div>
-
-        <h1>
-          ¡Gracias por tu opinión!
-        </h1>
-
-        <p class="subtitle">
-          Nos ayuda a seguir mejorando.
-        </p>
-
+        <div class="thanks-icon">✓</div>
+        <h1>¡Gracias por tu opinión!</h1>
+        <p class="subtitle">Nos ayuda a seguir mejorando.</p>
       </div>
-
     </section>
 
   </div>
 
+  <iframe name="respuestaFrame" id="respuestaFrame" style="display:none;"></iframe>
 
-  <iframe
-    name="respuestaFrame"
-    id="respuestaFrame"
-    style="display:none;">
-  </iframe>
-
-
-  <form
-    id="formularioRespuesta"
-    class="hidden-form"
-    method="POST"
-    target="respuestaFrame"
-    onsubmit="prepararEnvio()">
-
+  <form id="formularioRespuesta" class="hidden-form" method="POST" target="respuestaFrame" onsubmit="prepararEnvio()">
     <input type="hidden" name="habitacion" id="campoHabitacion">
     <input type="hidden" name="evaluacion" id="campoEvaluacion">
     <input type="hidden" name="motivos" id="campoMotivos">
     <input type="hidden" name="comentario" id="campoComentario">
-
   </form>
 
-
   <script>
-
     const URL_SERVIDOR =
       'https://script.google.com/macros/s/AKfycbz-i-BJ2oNiwlEvPWmwqfrMTDU1Xhx5J9RWZU8hUyy5U3hYQcvUFAe6R58oLiYCJ3-tvw/exec';
 
@@ -396,11 +111,8 @@
       parametros.get('habitacion') || '';
 
     let evaluacionSeleccionada = '';
-
     let motivosSeleccionados = [];
-
     let enviando = false;
-
 
     document.getElementById('formularioRespuesta').action =
       URL_SERVIDOR;
@@ -408,40 +120,26 @@
     document.getElementById('campoHabitacion').value =
       HABITACION;
 
-
     function mostrarPantalla(numero) {
-
       document.querySelectorAll('.screen').forEach(function(screen) {
         screen.classList.remove('active');
       });
-
-      document
-        .getElementById('screen' + numero)
-        .classList.add('active');
-
+      document.getElementById('screen' + numero).classList.add('active');
       window.scrollTo(0, 0);
     }
 
-
     function seleccionarEvaluacion(evaluacion) {
-
       evaluacionSeleccionada = evaluacion;
-
       const pregunta =
         document.getElementById('preguntaMotivos');
 
       if (evaluacion === 'CONTENTO') {
-
         pregunta.textContent =
           '¿Qué fue lo que más te gustó?';
-
       } else if (evaluacion === 'MAS O MENOS') {
-
         pregunta.textContent =
           '¿Qué podríamos mejorar?';
-
       } else {
-
         pregunta.textContent =
           '¿Qué fue lo que no te gustó?';
       }
@@ -449,28 +147,20 @@
       mostrarPantalla(2);
     }
 
-
     document
       .querySelectorAll('.reason-button')
       .forEach(function(button) {
-
         button.addEventListener('click', function() {
-
           const motivo = this.dataset.reason;
 
           if (motivosSeleccionados.includes(motivo)) {
-
             motivosSeleccionados =
               motivosSeleccionados.filter(function(item) {
                 return item !== motivo;
               });
-
             this.classList.remove('selected');
-
           } else {
-
             motivosSeleccionados.push(motivo);
-
             this.classList.add('selected');
           }
 
@@ -478,24 +168,17 @@
             .getElementById('continueButton')
             .disabled =
               motivosSeleccionados.length === 0;
-
         });
-
       });
 
-
     function irAComentario() {
-
       if (motivosSeleccionados.length === 0) {
         return;
       }
-
       mostrarPantalla(3);
     }
 
-
     function prepararEnvio() {
-
       document.getElementById('campoHabitacion').value =
         HABITACION;
 
@@ -509,9 +192,7 @@
         document.getElementById('comentario').value.trim();
     }
 
-
     function enviarRespuesta() {
-
       if (enviando) {
         return;
       }
@@ -522,48 +203,31 @@
       const sendButton =
         document.getElementById('sendButton');
 
-
       if (!HABITACION) {
-
         errorMessage.textContent =
           'No se pudo identificar la habitación.';
-
         errorMessage.style.display = 'block';
-
         return;
       }
-
 
       if (!evaluacionSeleccionada) {
-
         errorMessage.textContent =
           'No se pudo identificar la evaluación.';
-
         errorMessage.style.display = 'block';
-
         return;
       }
-
 
       if (motivosSeleccionados.length === 0) {
-
         errorMessage.textContent =
           'Seleccioná al menos un motivo.';
-
         errorMessage.style.display = 'block';
-
         return;
       }
 
-
       enviando = true;
-
       sendButton.disabled = true;
-
       sendButton.textContent = 'ENVIANDO...';
-
       errorMessage.style.display = 'none';
-
 
       prepararEnvio();
 
@@ -571,16 +235,10 @@
         .getElementById('formularioRespuesta')
         .submit();
 
-
       setTimeout(function() {
-
         mostrarPantalla(4);
-
       }, 1200);
-
     }
-
   </script>
-
 </body>
 </html>
